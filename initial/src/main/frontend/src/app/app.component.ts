@@ -28,9 +28,10 @@ export class AppComponent {
       console.log('Result part: ' + self.srv_result.id);
      });*/
 
-    helloService.getHello2('Dennis').subscribe( echo => {
+    helloService.getHello3('Dennis').subscribe( echo => {
       console.log('Result from call: ' + echo);
-      self.srv_result = Object.assign({}, echo);
+      //self.srv_result = Object.assign({}, echo);
+      self.srv_result = echo;
       console.log('Result part: ' + self.srv_result.content);
       console.log('Result part: ' + self.srv_result.id);
     });

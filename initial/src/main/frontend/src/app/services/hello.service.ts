@@ -41,9 +41,25 @@ export class HelloService {
 
     return this.http.get<string>(serviceUrl, {responseType: 'text' as 'json'})
       .pipe(map( res => {
-        let result : HelloResponse;
-        result = JSON.parse(res);
-        return result;
+        return JSON.parse(res);
+      }))
+      .pipe(catchError((e: any) => this.handleError(e)));
+  }
+
+  /**
+   *
+   * Returns a Observable<HelloResponse> (JSON).
+   * See map() section on how the result is created.
+   *
+   * @param param
+   */
+  public getHello3(param: string): Observable<HelloResponse> {
+    const serviceUrl = 'http://localhost:8080/greeting?name=' + param;
+    console.log('calling service URL ' + serviceUrl);
+
+    return this.http.get<HelloResponse>(serviceUrl)
+      .pipe(map( res => {
+        return res;
       }))
       .pipe(catchError((e: any) => this.handleError(e)));
   }
