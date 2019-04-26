@@ -12,6 +12,7 @@ export class AppComponent {
   title: String = 'Hello World with REST call';
   service_result: String = '(not yet called)';
   srv_result: HelloResponse;
+  srv_results: HelloResponse[];
 
   constructor(protected helloService: HelloService) {
    const self = this;
@@ -34,6 +35,13 @@ export class AppComponent {
       self.srv_result = echo;
       console.log('Result part: ' + self.srv_result.content);
       console.log('Result part: ' + self.srv_result.id);
+    });
+
+    helloService.getHellos('Dennis').subscribe( echo => {
+      console.log('Result from call: ' + echo);
+      self.srv_results = echo;
+      //console.log('Result part: ' + self.srv_result.content);
+      //console.log('Result part: ' + self.srv_result.id);
     });
   }
 }

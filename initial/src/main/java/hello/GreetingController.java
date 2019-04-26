@@ -1,5 +1,7 @@
 package hello;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,5 +20,17 @@ public class GreetingController {
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
         return new Greeting(counter.incrementAndGet(),
                 String.format(template, name));
+    }
+
+    @RequestMapping("/greetings")
+    public List<Greeting> greetings(@RequestParam(value="name", defaultValue="World") String name) {
+        List<Greeting> results = new ArrayList<Greeting>();
+        results.add(new Greeting(counter.incrementAndGet(), String.format(template, name + counter.get())));
+        results.add(new Greeting(counter.incrementAndGet(), String.format(template, name + counter.get())));
+        results.add(new Greeting(counter.incrementAndGet(), String.format(template, name + counter.get())));
+        results.add(new Greeting(counter.incrementAndGet(), String.format(template, name + counter.get())));
+        results.add(new Greeting(counter.incrementAndGet(), String.format(template, name + counter.get())));
+        results.add(new Greeting(counter.incrementAndGet(), String.format(template, name + counter.get())));
+        return results;
     }
 }
