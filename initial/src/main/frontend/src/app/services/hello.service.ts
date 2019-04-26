@@ -72,7 +72,7 @@ export class HelloService {
 
   /**
    *
-   * Returns a Observable<HelloResponse> (JSON).
+   * Returns a Observable<HelloResponse[]> (JSON).
    * See map() section on how the result is created.
    *
    * @param param

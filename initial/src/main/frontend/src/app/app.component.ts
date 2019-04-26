@@ -40,8 +40,6 @@ export class AppComponent {
     helloService.getHellos('Dennis').subscribe( echo => {
       console.log('Result from call: ' + echo);
       self.srv_results = echo;
-      //console.log('Result part: ' + self.srv_result.content);
-      //console.log('Result part: ' + self.srv_result.id);
     });
   }
 }
